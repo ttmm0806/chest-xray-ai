@@ -45,5 +45,6 @@ import os
 
 if __name__ == "__main__":
     import os
-    port = int(os.environ.get("PORT", 5000))  # ✅ 環境変数PORTを使う（Renderが使うポート）
-    app.run(host="0.0.0.0", port=port, debug=False)  # ✅ 127.0.0.1 → 0.0.0.0 にする
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
+
