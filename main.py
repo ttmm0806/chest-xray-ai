@@ -22,6 +22,7 @@ def index():
 def predict():
     file = request.files['image']
     filename = secure_filename(file.filename)
+    os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     file.save(filepath)
 
