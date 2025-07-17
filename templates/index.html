@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>X線画像AI評価</title>
+</head>
+<body>
+  <h1>胸部X線画像AI評価ツール</h1>
+  <input type="file" id="imageInput">
+  <button onclick="uploadImage()">診断開始</button>
+  <p id="result"></p>
+  <img id="heatmap" style="max-width: 300px;">
+  <script>
+    function uploadImage() {
+      const file = document.getElementById('imageInput').files[0];
+      const formData = new FormData();
+      formData.append('image', file);
+
+      fetch('/predict', {
+        method: 'POST',
+        body: formData
+      }).then(res => res.json())
+      .then(data => {
+        document.getElementById('result').innerText = '予測結果: ' + data.prediction;
+        document.getElementById('heatmap').src = data.gradcam;
+      });
+    }
+  </script>
+</body>
+</html>
