@@ -44,6 +44,6 @@ def predict():
 import os
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # Renderが指定するPORTを使う
-    app.run(host="0.0.0.0", port=port, debug=True)  # host=0.0.0.0 が重要
-
+    import os
+    port = int(os.environ.get("PORT", 5000))  # ✅ 環境変数PORTを使う（Renderが使うポート）
+    app.run(host="0.0.0.0", port=port, debug=False)  # ✅ 127.0.0.1 → 0.0.0.0 にする
