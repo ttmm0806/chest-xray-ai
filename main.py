@@ -10,7 +10,6 @@ from model import load_model, generate_gradcam
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 
-# フォルダがなければ作成する
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 model = load_model()
